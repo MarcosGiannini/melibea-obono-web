@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Trifonia Melibea Obono — Escritora, Académica, Activista',
+  description = 'Sitio web oficial de Trifonia Melibea Obono, escritora guineana, académica postdoctoral Humboldt y activista de derechos humanos.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts: Cormorant Garamond (serif) + DM Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Script inline: aplica dark/light ANTES de que el navegador pinte.
+      Sin esto habría un parpadeo (flash) al cargar en modo oscuro.
+      Lee la preferencia guardada en localStorage; si no hay ninguna,
+      usa la preferencia del sistema operativo del usuario.
+    -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Navbar />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
