@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const informes = [
+  {
+    title: 'Homophobic State: LGBTQ+ rights in Equatorial Guinea',
+    year: 2019,
+    url: 'https://egjustice.org/content/state-sponsored-homophobia-the-status-of-lgbtq-rights-in-equatorial-guinea',
+    org: 'EG Justice',
+  },
+  {
+    title: "Study of sexual minorities' access to fundamental rights in Equatorial Guinea",
+    year: 2019,
+    url: 'https://www.somospartedelmundo.org/informes.php',
+    org: 'Somos Parte del Mundo',
+  },
+  {
+    title: 'Survey on Human Trafficking for Sexual and Labor Exploitation in Equatorial Guinea',
+    year: 2020,
+    url: 'https://www.somospartedelmundo.org/informes.php',
+    org: 'Somos Parte del Mundo',
+  },
+  {
+    title: 'We Are Alone in this World: Torture and Cruel Treatment',
+    year: 2023,
+    url: 'https://www.somospartedelmundo.org/informes.php',
+    org: 'Somos Parte del Mundo',
+  },
+  {
+    title: 'Report on Lesbophobia, Human Rights and Police Raids in Equatorial Guinea',
+    year: 2024,
+    url: 'https://www.somospartedelmundo.org/informes.php',
+    org: 'Somos Parte del Mundo',
+  },
+  {
+    title: 'Report on LGBTI people in Equatorial Guinea',
+    year: 2024,
+    url: 'https://synergiaihr.org/wp-content/uploads/2024/11/Report-on-Lesbophobia-Human-Rights-and-Police-Raids-in-Equatorial-Guinea-.pdf',
+    org: 'Synergia IHR',
+  },
+];
+---
+
+<BaseLayout
+  title="Activismo — Trifonia Melibea Obono"
+  description="Activismo e informes de derechos humanos de Trifonia Melibea Obono en Guinea Ecuatorial."
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Derechos humanos</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Activismo</h1>
+    </header>
+
+    <!-- Contexto -->
+    <div class="mb-14 p-6 border-l-4 border-terracota-500 bg-terracota-500/5">
+      <p class="font-sans text-sm text-gray-600 dark:text-crema-300 leading-relaxed">
+        Durante ocho años (2016–2023) Trifonia Melibea Obono coordinó <strong class="text-obsidian-900 dark:text-crema-200">Somos Parte del Mundo</strong> en Guinea Ecuatorial, un país bajo régimen dictatorial. Elaboró seis informes de derechos humanos que motivaron el escrutinio de la ONU, la Unión Africana y la Unión Europea. Fue encarcelada en agosto de 2023.
+      </p>
+      <p class="font-sans text-sm text-gray-600 dark:text-crema-300 leading-relaxed mt-3">
+        En agosto de 2024 participó en el Cuarto Ciclo del Examen Periódico Universal de la <strong class="text-obsidian-900 dark:text-crema-200">ONU</strong> en representación de Somos Parte del Mundo.
+      </p>
+    </div>
+
+    <!-- Informes -->
+    <h2 class="font-serif text-2xl text-obsidian-900 dark:text-crema-200 mb-8">Informes de derechos humanos</h2>
+
+    <ol class="space-y-4">
+      {informes.map((informe) => (
+        <li>
+          <a
+            href={informe.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex gap-5 items-start p-5 border border-crema-300 dark:border-obsidian-700 hover:border-terracota-500 dark:hover:border-terracota-500 transition-colors"
+          >
+            <span class="font-serif text-2xl text-terracota-500 shrink-0 leading-none mt-0.5">{informe.year}</span>
+            <div class="flex-1">
+              <p class="font-sans text-sm text-obsidian-900 dark:text-crema-200 group-hover:text-terracota-500 dark:group-hover:text-terracota-400 transition-colors leading-snug">
+                {informe.title}
+              </p>
+              <p class="font-sans text-xs text-gray-400 dark:text-crema-400/60 mt-1">{informe.org}</p>
+            </div>
+            <span class="text-xs font-sans text-terracota-500 shrink-0 self-center opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>

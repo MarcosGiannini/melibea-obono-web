@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const premios = await getCollection('premios');
+const ordenados = premios.sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout
+  title="Premios — Trifonia Melibea Obono"
+  description="Premios y reconocimientos de Trifonia Melibea Obono, escritora y activista de Guinea Ecuatorial."
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Reconocimientos</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Premios</h1>
+    </header>
+
+    <ol class="space-y-0">
+      {ordenados.map((premio, i) => (
+        <li class="flex gap-6 group">
+          <!-- Línea del timeline -->
+          <div class="flex flex-col items-center shrink-0 pt-1">
+            <div class="w-3 h-3 rounded-full border-2 border-ocre-500 bg-white dark:bg-obsidian-900 group-first:bg-ocre-500 dark:group-first:bg-ocre-500"></div>
+            {i < ordenados.length - 1 && (
+              <div class="flex-1 w-px bg-crema-300 dark:bg-obsidian-700 my-2 min-h-[3rem]"></div>
+            )}
+          </div>
+
+          <!-- Contenido -->
+          <div class="pb-10">
+            <span class="font-sans text-xs uppercase tracking-widest text-ocre-500 mb-2 block">
+              {premio.data.year}
+            </span>
+            <h2 class="font-serif text-xl sm:text-2xl text-obsidian-900 dark:text-crema-200 leading-snug mb-1">
+              {premio.data.title}
+            </h2>
+            <p class="font-sans text-sm text-gray-500 dark:text-crema-400 mb-2">
+              {premio.data.organization}
+            </p>
+            {premio.data.description && (
+              <p class="font-sans text-sm text-gray-500 dark:text-crema-300/70 leading-relaxed">
+                {premio.data.description}
+              </p>
+            )}
+            {premio.data.relatedBook && (
+              <p class="font-sans text-xs text-selva-600 dark:text-selva-600 mt-2">
+                Por <em>{premio.data.relatedBook}</em>
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>

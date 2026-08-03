@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = await getCollection('multimedia');
+const ordenados = items.sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.localeCompare(a.data.date);
+});
+
+const tipoLabel: Record<string, string> = {
+  podcast: 'Podcast',
+  video: 'Vídeo',
+  article: 'Entrevista / Artículo',
+};
+---
+
+<BaseLayout
+  title="Multimedia — Trifonia Melibea Obono"
+  description="Entrevistas, podcasts y artículos sobre la obra y el activismo de Trifonia Melibea Obono."
+>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Prensa y medios</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Multimedia</h1>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {ordenados.map((item) => (
+        <a
+          href={item.data.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex flex-col gap-3 p-6 border border-crema-300 dark:border-obsidian-700 hover:border-ocre-500 dark:hover:border-ocre-500 transition-colors"
+        >
+          <!-- Tipo + fuente -->
+          <div class="flex items-center justify-between">
+            <span class="font-sans text-xs uppercase tracking-widest text-ocre-500">
+              {tipoLabel[item.data.type]}
+            </span>
+            <span class="font-sans text-xs text-gray-400 dark:text-crema-400/60">
+              {item.data.source}
+            </span>
+          </div>
+
+          <!-- Título -->
+          <h2 class="font-serif text-lg text-obsidian-900 dark:text-crema-200 leading-snug group-hover:text-ocre-500 dark:group-hover:text-ocre-400 transition-colors">
+            {item.data.title}
+          </h2>
+
+          {/* Descripción */}
+          {item.data.description && (
+            <p class="font-sans text-sm text-gray-500 dark:text-crema-300/70 leading-relaxed">
+              {item.data.description}
+            </p>
+          )}
+
+          <!-- Fecha + icono enlace -->
+          <div class="flex items-center justify-between mt-auto pt-2">
+            {item.data.date && (
+              <span class="font-sans text-xs text-gray-400 dark:text-crema-400/50">
+                {new Date(item.data.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long' })}
+              </span>
+            )}
+            <span class="text-xs font-sans text-ocre-500 group-hover:underline ml-auto">
+              Leer →
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
