@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const libros = await getCollection('libros');
+const ordenados = libros.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+
+<BaseLayout
+  title="Libros — Trifonia Melibea Obono"
+  description="Los ocho libros de Trifonia Melibea Obono: novelas, relatos y ensayos sobre identidad, feminismo queer y Guinea Ecuatorial."
+>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Obra literaria</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Libros</h1>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-14">
+      {ordenados.map((libro) => (
+        <article>
+          <!-- Portada: imagen o placeholder de color -->
+          <div class="aspect-[3/4] bg-obsidian-800 dark:bg-obsidian-700 mb-5 overflow-hidden relative">
+            <img
+              src={libro.data.cover}
+              alt={`Portada de ${libro.data.title}`}
+              class="w-full h-full object-cover"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            />
+            <!-- Placeholder visible cuando no hay imagen -->
+            <div
+              class="absolute inset-0 hidden items-end p-5"
+              style="background: linear-gradient(to top, #1a1008 40%, #2e1c0a)"
+            >
+              <span class="font-serif text-crema-200 text-xl leading-tight">{libro.data.title}</span>
+            </div>
+          </div>
+
+          <!-- Título y metadatos -->
+          <h2 class="font-serif text-xl text-obsidian-900 dark:text-crema-200 leading-snug mb-1">
+            {libro.data.title}
+          </h2>
+          <p class="font-sans text-xs text-gray-400 dark:text-crema-400 mb-4">
+            {[libro.data.year, libro.data.publisher].filter(Boolean).join(' · ')}
+          </p>
+
+          <!-- Sinopsis expandible (nativa, sin JS) -->
+          <details class="group">
+            <summary class="list-none cursor-pointer flex items-center gap-1.5 text-xs font-sans font-medium text-ocre-500 hover:text-ocre-400 transition-colors">
+              <svg
+                class="w-3 h-3 transition-transform group-open:rotate-90"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true"
+              >
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
+              Sinopsis
+            </summary>
+
+            <div class="mt-3 space-y-4">
+              <p class="text-sm font-sans text-gray-600 dark:text-crema-300 leading-relaxed">
+                {libro.data.synopsis}
+              </p>
+
+              {/* Citas de prensa */}
+              {libro.data.pressQuotes && libro.data.pressQuotes.length > 0 && (
+                <div class="space-y-3 pt-2">
+                  {libro.data.pressQuotes.map((pq) => (
+                    <blockquote class="border-l-2 border-ocre-500 pl-3">
+                      <p class="text-xs font-sans italic text-gray-500 dark:text-crema-300 leading-relaxed">
+                        «{pq.quote}»
+                      </p>
+                      <footer class="text-xs font-sans text-ocre-500 mt-1">
+                        — {pq.author}, <span class="not-italic">{pq.source}</span>
+                      </footer>
+                    </blockquote>
+                  ))}
+                </div>
+              )}
+
+              {/* Traducciones */}
+              {libro.data.translatedTo && libro.data.translatedTo.length > 0 && (
+                <p class="text-xs font-sans text-selva-600 dark:text-selva-600">
+                  Traducida al {libro.data.translatedTo.join(' y al ')}.
+                </p>
+              )}
+            </div>
+          </details>
+
+          {/* Premios */}
+          {libro.data.awards && libro.data.awards.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              {libro.data.awards.map((award) => (
+                <span class="text-xs px-2 py-0.5 bg-terracota-500/10 text-terracota-500 font-sans leading-5">
+                  {award}
+                </span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

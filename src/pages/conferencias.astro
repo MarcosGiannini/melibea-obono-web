@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const todas = await getCollection('conferencias');
+
+// Agrupar por año y ordenar descendente dentro de cada año
+const porAño: Record<number, typeof todas> = {};
+for (const conf of todas) {
+  const y = conf.data.year;
+  if (!porAño[y]) porAño[y] = [];
+  porAño[y].push(conf);
+}
+const años = Object.keys(porAño).map(Number).sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title="Conferencias — Trifonia Melibea Obono"
+  description="Conferencias internacionales de Trifonia Melibea Obono en Viena, Hamburgo, Lyon, Berlín, Barcelona y más."
+>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Actividad académica</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Conferencias</h1>
+    </header>
+
+    <div class="space-y-16">
+      {años.map((año) => (
+        <div>
+          <!-- Cabecera de año -->
+          <div class="flex items-center gap-4 mb-8">
+            <span class="font-serif text-3xl text-ocre-500">{año}</span>
+            <div class="flex-1 h-px bg-crema-300 dark:bg-obsidian-700"></div>
+          </div>
+
+          <!-- Lista de conferencias del año -->
+          <ol class="space-y-6 ml-2">
+            {porAño[año].map((conf) => (
+              <li class="flex gap-5">
+                <!-- Punto del timeline -->
+                <div class="flex flex-col items-center mt-1.5 shrink-0">
+                  <div class="w-2 h-2 rounded-full bg-ocre-500"></div>
+                  <div class="flex-1 w-px bg-crema-300 dark:bg-obsidian-700 mt-2"></div>
+                </div>
+
+                <div class="pb-6">
+                  {conf.data.month && (
+                    <p class="font-sans text-xs uppercase tracking-widest text-gray-400 dark:text-crema-400 mb-1">
+                      {conf.data.month} {conf.data.year}
+                    </p>
+                  )}
+                  <h2 class="font-serif text-lg sm:text-xl text-obsidian-900 dark:text-crema-200 leading-snug mb-2">
+                    «{conf.data.title}»
+                  </h2>
+                  <p class="font-sans text-sm text-gray-500 dark:text-crema-400">
+                    {conf.data.university}
+                  </p>
+                  <p class="font-sans text-xs text-gray-400 dark:text-crema-400/60 mt-0.5">
+                    {conf.data.city}, {conf.data.country}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

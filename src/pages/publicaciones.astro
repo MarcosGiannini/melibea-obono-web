@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Publicaciones — Trifonia Melibea Obono"
+  description="Artículos académicos y de prensa de Trifonia Melibea Obono."
+>
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Escritura no literaria</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Publicaciones</h1>
+    </header>
+
+    <div class="space-y-8">
+      <div>
+        <h2 class="font-serif text-2xl text-obsidian-900 dark:text-crema-200 mb-4">Colaboraciones en prensa</h2>
+        <div class="space-y-3">
+          {[
+            { name: 'El País', url: 'https://elpais.com/autor/trifonia-melibea-obono/' },
+            { name: 'Mundo Negro', url: 'https://mundonegro.es/' },
+          ].map((medio) => (
+            <a
+              href={medio.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between p-4 border border-crema-300 dark:border-obsidian-700 hover:border-ocre-500 dark:hover:border-ocre-500 transition-colors group"
+            >
+              <span class="font-sans text-sm text-obsidian-900 dark:text-crema-200 group-hover:text-ocre-500 transition-colors">
+                {medio.name}
+              </span>
+              <span class="text-xs text-ocre-500 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-crema-300 dark:border-obsidian-700">
+        <p class="font-sans text-sm text-gray-500 dark:text-crema-400/60 italic">
+          El listado completo de publicaciones académicas estará disponible próximamente.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

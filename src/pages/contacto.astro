@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contacto — Trifonia Melibea Obono"
+  description="Contacta con Trifonia Melibea Obono para invitaciones, entrevistas o colaboraciones."
+>
+  <section class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <header class="mb-14">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-3">Escribir</p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-obsidian-900 dark:text-crema-200">Contacto</h1>
+    </header>
+
+    <!-- Datos directos -->
+    <div class="flex flex-col gap-3 mb-14">
+      <a
+        href="mailto:Trifoniamelibea@hotmail.com"
+        class="font-sans text-lg text-ocre-500 hover:text-ocre-400 transition-colors"
+      >
+        Trifoniamelibea@hotmail.com
+      </a>
+      <a
+        href="https://x.com/melibeaobono"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-sans text-sm text-gray-500 dark:text-crema-400 hover:text-ocre-500 transition-colors"
+      >
+        @melibeaobono en X (Twitter)
+      </a>
+      <a
+        href="https://orcid.org/0009-0009-3218-299X"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-sans text-sm text-gray-500 dark:text-crema-400 hover:text-ocre-500 transition-colors"
+      >
+        ORCID: 0009-0009-3218-299X
+      </a>
+    </div>
+
+    <!-- Formulario Netlify Forms -->
+    <form
+      name="contacto"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="space-y-6"
+    >
+      <input type="hidden" name="form-name" value="contacto" />
+      <!-- Honeypot anti-spam -->
+      <p class="hidden"><label>No rellenar: <input name="bot-field" /></label></p>
+
+      <div>
+        <label for="nombre" class="block font-sans text-xs uppercase tracking-widest text-gray-500 dark:text-crema-400 mb-2">
+          Nombre
+        </label>
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          required
+          class="w-full bg-transparent border border-crema-300 dark:border-obsidian-700 px-4 py-3 font-sans text-sm text-obsidian-900 dark:text-crema-200 placeholder-gray-400 dark:placeholder-crema-400/40 focus:outline-none focus:border-ocre-500 transition-colors"
+          placeholder="Tu nombre"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block font-sans text-xs uppercase tracking-widest text-gray-500 dark:text-crema-400 mb-2">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          class="w-full bg-transparent border border-crema-300 dark:border-obsidian-700 px-4 py-3 font-sans text-sm text-obsidian-900 dark:text-crema-200 placeholder-gray-400 dark:placeholder-crema-400/40 focus:outline-none focus:border-ocre-500 transition-colors"
+          placeholder="tu@email.com"
+        />
+      </div>
+
+      <div>
+        <label for="asunto" class="block font-sans text-xs uppercase tracking-widest text-gray-500 dark:text-crema-400 mb-2">
+          Asunto
+        </label>
+        <input
+          id="asunto"
+          name="asunto"
+          type="text"
+          class="w-full bg-transparent border border-crema-300 dark:border-obsidian-700 px-4 py-3 font-sans text-sm text-obsidian-900 dark:text-crema-200 placeholder-gray-400 dark:placeholder-crema-400/40 focus:outline-none focus:border-ocre-500 transition-colors"
+          placeholder="Invitación, entrevista, colaboración..."
+        />
+      </div>
+
+      <div>
+        <label for="mensaje" class="block font-sans text-xs uppercase tracking-widest text-gray-500 dark:text-crema-400 mb-2">
+          Mensaje
+        </label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          required
+          rows="6"
+          class="w-full bg-transparent border border-crema-300 dark:border-obsidian-700 px-4 py-3 font-sans text-sm text-obsidian-900 dark:text-crema-200 placeholder-gray-400 dark:placeholder-crema-400/40 focus:outline-none focus:border-ocre-500 transition-colors resize-none"
+          placeholder="Tu mensaje..."
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full sm:w-auto px-10 py-3 bg-ocre-500 hover:bg-ocre-600 text-white font-sans font-medium text-sm tracking-wide transition-colors"
+      >
+        Enviar mensaje
+      </button>
+    </form>
+  </section>
+</BaseLayout>
