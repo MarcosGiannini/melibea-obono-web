@@ -1,0 +1,31 @@
+{
+  "title": "La hija de las mitangan",
+  "year": 2023,
+  "publisher": "Wanafrica Ediciones",
+  "synopsis": "Primera vez que mujeres son protagonistas de la lucha por la independencia de Guinea Ecuatorial. Basada en la vida real de Lucía Ndjé Mikibi, la novela reconstruye las turbulencias políticas y sociales de un país marcado por la violencia y la resistencia. Elegida por El País como una de las mejores obras de 2023.",
+  "cover": "/images/libros/la-hija-de-las-mitangan.jpg",
+  "featured": false,
+  "awards": ["Premio Periplo 2023"],
+  "pressQuotes": [
+    {
+      "quote": "El relato valiente y descarnado de una interminable sucesión de violencias.",
+      "author": "José Naranjo",
+      "source": "El País"
+    },
+    {
+      "quote": "El mayor logro literario de Trifonia Melibea Obono hasta la fecha.",
+      "author": "Alfonso Armada",
+      "source": "FronteraD"
+    },
+    {
+      "quote": "Un libro de referència fonamental de la literatura guineana.",
+      "author": "Xavier Montanyà",
+      "source": "VILAAWEB"
+    },
+    {
+      "quote": "La escritora de etnia fang conduce a los lectores a través de las turbulencias políticas y sociales que marcan el devenir de Lucía.",
+      "author": "Laura Degrado",
+      "source": "Agencia EFE"
+    }
+  ]
+}
