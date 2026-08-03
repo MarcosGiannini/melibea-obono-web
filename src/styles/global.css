@@ -4,44 +4,42 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* === PALETA MELIBEA === */
+  /* === PALETA MELIBEA — OPCIÓN C: PANAFRICANISMO QUEER === */
 
-  /* Fondo: marrón muy oscuro, casi negro, cálido (conecta con la tierra ecuatorial) */
-  --color-obsidian-900: #1a1008;
-  --color-obsidian-800: #241608;
-  --color-obsidian-700: #2e1c0a;
-  --color-obsidian-600: #3a230c;
+  /* Fondo: negro casi puro — limpio, sin tinte, máximo contraste */
+  --color-obsidian-900: #0a0a0a;
+  --color-obsidian-800: #141414;
+  --color-obsidian-700: #1e1e1e;
+  --color-obsidian-600: #282828;
 
-  /* Principal: ocre/ámbar — color de las portadas Wanafrica */
-  --color-ocre-300: #e8c06a;
-  --color-ocre-400: #d9a83a;
-  --color-ocre-500: #c8922a;
-  --color-ocre-600: #b07820;
-  --color-ocre-700: #8a5e18;
+  /* Dominante: rojo panafricanista — la bandera de Garvey, la resistencia africana */
+  --color-ocre-300: #fca5a5;
+  --color-ocre-400: #f87171;
+  --color-ocre-500: #dc2626;
+  --color-ocre-600: #b91c1c;
+  --color-ocre-700: #991b1b;
 
-  /* Acento: terracota/rojo africano — premios, badges, énfasis */
-  --color-terracota-300: #e07060;
-  --color-terracota-400: #d05040;
-  --color-terracota-500: #c04030;
-  --color-terracota-600: #a03020;
+  /* Acento: violeta queer — presente pero discreto, señal LGBTQIA+ */
+  --color-terracota-300: #a78bfa;
+  --color-terracota-400: #8b5cf6;
+  --color-terracota-500: #7c3aed;
+  --color-terracota-600: #6d28d9;
 
-  /* Texto: crema cálida — legible sobre fondo oscuro */
-  --color-crema-50:  #fdfaf6;
-  --color-crema-100: #faf5ee;
-  --color-crema-200: #f5ede0;
-  --color-crema-300: #ede0cc;
-  --color-crema-400: #e0cdb8;
+  /* Texto: crema cálida — más africana que el blanco frío */
+  --color-crema-50:  #fefef8;
+  --color-crema-100: #fdf8ee;
+  --color-crema-200: #faf0da;
+  --color-crema-300: #f5e4c0;
+  --color-crema-400: #ecd4a0;
 
-  /* Selva: verde oscuro ecuatorial — detalles, separadores */
-  --color-selva-900: #162414;
-  --color-selva-800: #1e3318;
-  --color-selva-700: #2d4a2a;
-  --color-selva-600: #3a5e36;
+  /* Verde africano: sección activismo — bandera panafricana */
+  --color-selva-900: #052e16;
+  --color-selva-800: #14532d;
+  --color-selva-700: #166534;
+  --color-selva-600: #15803d;
 
   /* === TIPOGRAFÍA === */
-  /* Serif elegante para títulos (coherente con portadas Wanafrica) */
   --font-serif: "Cormorant Garamond", Georgia, serif;
-  /* Sans-serif moderno y legible para cuerpo */
   --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
