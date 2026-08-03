@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+/* Activa dark mode cuando <html> tiene la clase 'dark' */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* === PALETA MELIBEA === */
+
+  /* Fondo: marrón muy oscuro, casi negro, cálido (conecta con la tierra ecuatorial) */
+  --color-obsidian-900: #1a1008;
+  --color-obsidian-800: #241608;
+  --color-obsidian-700: #2e1c0a;
+  --color-obsidian-600: #3a230c;
+
+  /* Principal: ocre/ámbar — color de las portadas Wanafrica */
+  --color-ocre-300: #e8c06a;
+  --color-ocre-400: #d9a83a;
+  --color-ocre-500: #c8922a;
+  --color-ocre-600: #b07820;
+  --color-ocre-700: #8a5e18;
+
+  /* Acento: terracota/rojo africano — premios, badges, énfasis */
+  --color-terracota-300: #e07060;
+  --color-terracota-400: #d05040;
+  --color-terracota-500: #c04030;
+  --color-terracota-600: #a03020;
+
+  /* Texto: crema cálida — legible sobre fondo oscuro */
+  --color-crema-50:  #fdfaf6;
+  --color-crema-100: #faf5ee;
+  --color-crema-200: #f5ede0;
+  --color-crema-300: #ede0cc;
+  --color-crema-400: #e0cdb8;
+
+  /* Selva: verde oscuro ecuatorial — detalles, separadores */
+  --color-selva-900: #162414;
+  --color-selva-800: #1e3318;
+  --color-selva-700: #2d4a2a;
+  --color-selva-600: #3a5e36;
+
+  /* === TIPOGRAFÍA === */
+  /* Serif elegante para títulos (coherente con portadas Wanafrica) */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  /* Sans-serif moderno y legible para cuerpo */
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+/* === BASE === */
+body {
+  @apply font-sans bg-white text-gray-900 transition-colors duration-200;
+  @apply dark:bg-obsidian-900 dark:text-crema-200;
+}

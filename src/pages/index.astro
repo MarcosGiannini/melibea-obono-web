@@ -1,17 +1,33 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Trifonia Melibea Obono — Escritora, Académica, Activista">
+  <section class="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-20">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="font-sans text-xs tracking-widest uppercase text-ocre-500 mb-6">
+        Guinea Ecuatorial · Duisburg-Essen
+      </p>
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-obsidian-900 dark:text-crema-200 leading-tight mb-6">
+        Trifonia Melibea Obono
+      </h1>
+      <p class="font-sans text-base sm:text-lg text-gray-500 dark:text-crema-300 mb-10 leading-relaxed">
+        Escritora · Académica postdoctoral Humboldt · Activista de derechos humanos
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/libros"
+          class="px-8 py-3 bg-ocre-500 hover:bg-ocre-600 text-white font-sans font-medium text-sm tracking-wide transition-colors"
+        >
+          Ver libros
+        </a>
+        <a
+          href="/sobre-mi"
+          class="px-8 py-3 border border-obsidian-700 dark:border-crema-300 text-obsidian-900 dark:text-crema-200 hover:bg-crema-100 dark:hover:bg-obsidian-800 font-sans font-medium text-sm tracking-wide transition-colors"
+        >
+          Sobre mí
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

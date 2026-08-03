@@ -1,0 +1,79 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-obsidian-800 dark:bg-obsidian-900 text-crema-300 border-t border-obsidian-700 transition-colors duration-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Identidad -->
+      <div class="md:col-span-2">
+        <p class="font-serif text-xl text-crema-200 mb-2">Trifonia Melibea Obono</p>
+        <p class="text-sm text-crema-300/70 leading-relaxed max-w-md">
+          Escritora, académica y activista de Guinea Ecuatorial.<br />
+          Becaria postdoctoral Alexander von Humboldt,<br />
+          Universidad de Duisburg-Essen (Alemania).
+        </p>
+        <!-- Navegación rápida -->
+        <div class="flex flex-wrap gap-x-4 gap-y-1 mt-4">
+          {[
+            ['/', 'Inicio'],
+            ['/libros', 'Libros'],
+            ['/conferencias', 'Conferencias'],
+            ['/activismo', 'Activismo'],
+            ['/contacto', 'Contacto'],
+          ].map(([href, label]) => (
+            <a href={href} class="text-xs text-crema-300/50 hover:text-ocre-400 transition-colors">
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Contacto y redes -->
+      <div>
+        <p class="text-xs uppercase tracking-widest text-ocre-500 mb-3 font-sans font-medium">Contacto</p>
+        <div class="flex flex-col gap-2 text-sm">
+          <a
+            href="mailto:Trifoniamelibea@hotmail.com"
+            class="text-crema-300/70 hover:text-ocre-400 transition-colors"
+          >
+            Trifoniamelibea@hotmail.com
+          </a>
+          <a
+            href="https://x.com/melibeaobono"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-crema-300/70 hover:text-ocre-400 transition-colors"
+          >
+            @melibeaobono en X (Twitter)
+          </a>
+          <a
+            href="https://orcid.org/0009-0009-3218-299X"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-crema-300/70 hover:text-ocre-400 transition-colors"
+          >
+            ORCID: 0009-0009-3218-299X
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-6 border-t border-obsidian-700/40 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-crema-300/40">
+      <span>© {year} Trifonia Melibea Obono. Todos los derechos reservados.</span>
+      <span>
+        Web desarrollada por{' '}
+        <a
+          href="https://github.com/MarcosGiannini"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-ocre-400 transition-colors"
+        >
+          Marcos Giannini
+        </a>
+      </span>
+    </div>
+  </div>
+</footer>
