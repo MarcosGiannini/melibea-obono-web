@@ -32,16 +32,12 @@ const {
     />
 
     <!--
-      Script inline: aplica dark/light ANTES de que el navegador pinte.
-      Sin esto habría un parpadeo (flash) al cargar en modo oscuro.
-      Lee la preferencia guardada en localStorage; si no hay ninguna,
-      usa la preferencia del sistema operativo del usuario.
+      Script inline: aplica dark mode ANTES de que el navegador pinte.
+      Solo activa oscuro si el usuario lo eligió manualmente — el default es claro.
     -->
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
+        if (localStorage.getItem('theme') === 'dark') {
           document.documentElement.classList.add('dark');
         }
       })();
