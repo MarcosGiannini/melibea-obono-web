@@ -4,43 +4,51 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* === PALETA MELIBEA — OPCIÓN C: PANAFRICANISMO QUEER === */
+  /* === PALETA MELIBEA v2 — TIERRA QUEER === */
 
-  /* Fondo: negro casi puro — limpio, sin tinte, máximo contraste */
-  --color-obsidian-900: #0a0a0a;
-  --color-obsidian-800: #141414;
-  --color-obsidian-700: #1e1e1e;
-  --color-obsidian-600: #282828;
+  /* Fondo oscuro: negro casi puro, sin tinte */
+  --color-obsidian-900: #080810;
+  --color-obsidian-800: #0f0f1e;
+  --color-obsidian-700: #18182e;
+  --color-obsidian-600: #22223e;
 
-  /* Dominante: rojo panafricanista — la bandera de Garvey, la resistencia africana */
-  --color-ocre-300: #fca5a5;
-  --color-ocre-400: #f87171;
-  --color-ocre-500: #dc2626;
-  --color-ocre-600: #b91c1c;
-  --color-ocre-700: #991b1b;
+  /* Dominante: violeta índigo — feminismo queer, académico, literario */
+  --color-ocre-300: #a78bfa;
+  --color-ocre-400: #8b5cf6;
+  --color-ocre-500: #7c3aed;
+  --color-ocre-600: #6d28d9;
+  --color-ocre-700: #5b21b6;
 
-  /* Acento: violeta queer — presente pero discreto, señal LGBTQIA+ */
-  --color-terracota-300: #a78bfa;
-  --color-terracota-400: #8b5cf6;
-  --color-terracota-500: #7c3aed;
-  --color-terracota-600: #6d28d9;
+  /* Acento: rosa vivo — LGBTQIA+ presente */
+  --color-terracota-300: #fda4c8;
+  --color-terracota-400: #f472b6;
+  --color-terracota-500: #ec4899;
+  --color-terracota-600: #be185d;
 
-  /* Texto: crema cálida — más africana que el blanco frío */
-  --color-crema-50:  #fefef8;
-  --color-crema-100: #fdf8ee;
-  --color-crema-200: #faf0da;
-  --color-crema-300: #f5e4c0;
-  --color-crema-400: #ecd4a0;
+  /* Texto oscuro: blanco ligeramente lila */
+  --color-crema-50:  #fefcff;
+  --color-crema-100: #faf8ff;
+  --color-crema-200: #f4f0fe;
+  --color-crema-300: #ede8fc;
+  --color-crema-400: #ddd5f8;
 
-  /* Verde africano: sección activismo — bandera panafricana */
-  --color-selva-900: #052e16;
-  --color-selva-800: #14532d;
-  --color-selva-700: #166534;
-  --color-selva-600: #15803d;
+  /* Sección alternada oscura: índigo profundo */
+  --color-selva-900: #0a0820;
+  --color-selva-800: #110e36;
+  --color-selva-700: #1e1b4b;
+  --color-selva-600: #312e81;
 
   /* === TIPOGRAFÍA === */
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
+}
+
+/* === BASE — máxima diferencia entre modos === */
+body {
+  /* Claro: blanco luminoso + texto muy oscuro */
+  @apply font-sans bg-white text-gray-900 transition-colors duration-300;
+  /* Oscuro: negro profundo + texto crema */
+  @apply dark:bg-obsidian-900 dark:text-crema-200;
 }
 
 /* === BASE === */

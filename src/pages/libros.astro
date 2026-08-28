@@ -98,6 +98,21 @@ const ordenados = libros.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0))
               ))}
             </div>
           )}
+
+          {/* Botón de compra */}
+          {libro.data.buyUrl && (
+            <a
+              href={libro.data.buyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-2 w-full justify-center
+                     font-sans text-xs uppercase tracking-widest font-medium
+                     bg-ocre-500 hover:bg-ocre-600 text-white px-4 py-2.5
+                     transition-colors"
+            >
+              Comprar en Lenoy ↗
+            </a>
+          )}
         </article>
       ))}
     </div>
