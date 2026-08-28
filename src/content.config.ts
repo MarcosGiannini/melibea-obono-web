@@ -10,6 +10,7 @@ const libros = defineCollection({
     synopsis: z.string(),
     cover: z.string(),
     featured: z.boolean().optional(),
+    buyUrl: z.string().url().optional(),
     pressQuotes: z
       .array(z.object({ quote: z.string(), author: z.string(), source: z.string() }))
       .optional(),
